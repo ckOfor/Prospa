@@ -33,3 +33,22 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# EAS Build
+/Project1
+/Project2
+/Project3
+/Project4
+/Project5
+/Project6
+/Project7
+/Project8
+/Project9
+/Project10
+/Project11
+/Project12
+/Project13
+README.md
+README_zh-CN.md
+tempFragment.md
+# @end eas-cli

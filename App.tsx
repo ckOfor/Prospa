@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useEffect, useState} from "react";
+import {Asset} from "expo-asset";
+import * as Font from "expo-font";
+import Navigation from "./src/shared/navigation";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+function App() {
+	const [isLoadingComplete, setLoadingComplete] = useState(false)
+	
+	useEffect(() => {
+		loadResourcesAsync();
+	})
+	
+	const loadResourcesAsync = async () => {
+		await Promise.all([
+			Asset.loadAsync([
+				require("./src/assets/images/PhoneImage.png"),
+				require("./src/assets/images/ProspaBackground.png"),
+			]),
+			Font.loadAsync({
+				"BR-Firma-Medium": require("./src/assets/fonts/BRFirmaMedium.otf"),
+				"BR-Firma-SemiBold": require("./src/assets/fonts/BRFirmaBold.otf"),
+			}),
+		]);
+		setLoadingComplete(true)
+	};
+	
+	if (!isLoadingComplete) return null;
+	
+	return (
+		<Navigation />
+	)
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
