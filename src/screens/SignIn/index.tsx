@@ -18,7 +18,7 @@ import * as Animatable from 'react-native-animatable';
 const IMAGE_BACKGROUND: ImageStyle = {
 	height: Layout.window.height / 2.5,
 	width: '100%',
-	resizeMode: 'contain',
+	resizeMode: 'stretch',
 }
 
 const IMAGE_BORDER: ImageStyle = {
